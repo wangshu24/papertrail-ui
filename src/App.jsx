@@ -7,25 +7,17 @@ import {
 import './App.css'
 import Home from "./pages/Home"
 import Board from "./pages/Board"
-import {AppContext} from "./context/AppContext"
+import {AppProvider} from "./context/AppContext"
  
 function App() {
 
   return (
-    
       <Router>
-        
-       
         <Routes>
-          <Route path="/" element={ <Home />}>
-           
-          </Route>
-          <Route path="/board" element={ <Board /> }>
-     
-          </Route>
+          <Route path="/" element={ <Home />} />
+          <Route path="/board" element={ <Board /> } />
         </Routes>
-        </Router>
-
+      </Router>
   )
 }
 

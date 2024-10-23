@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 const AppContext = createContext(null);
 const AppDispatchContext = createContext(null)
 
-export function AppProvider({children} : any) {
+export function AppProvider({children} ) {
     const [app, dispatch] = useReducer(appReducer, initAppContext)
 
     return(
@@ -15,7 +15,7 @@ export function AppProvider({children} : any) {
     )
 }
 
-function appReducer(task : any, action : any) : UserState{
+function appReducer(task , action ){
 }
 
 export function useAppContext(){

@@ -1,6 +1,6 @@
 
 
-function Board() : JSX.Element{
+function Board(){
 
     return (
        <>

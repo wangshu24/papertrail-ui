@@ -1,6 +1,6 @@
-import 
+// import 
 
-function Home() : JSX.Element{
+function Home(){  
 
     return (
        <>

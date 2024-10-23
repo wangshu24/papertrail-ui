@@ -4,7 +4,7 @@ import {UserState, UserAction} from  "./typeContext"
 const UserContext = createContext(null)
 const ManageUserContext = createContext(null)
 
-export function UserContext({children}) : any{
+export function UserContext({children}){
     const [user, dispatch] = useReducer(userReducer, initUser)
 
     return( 
@@ -16,7 +16,7 @@ export function UserContext({children}) : any{
     )
 }
 
-function userReducer(user : UserState, action : UserAction) {
+function userReducer(user , action ) {
 
 }
 
