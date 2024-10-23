@@ -1,23 +1,22 @@
 import { createContext, useContext, useReducer } from "react";
+import {UserState, UserAction} from  "./typeContext"
 
-const UserContext = useContext(null)
-const ManageUserContext = useContext(null)
+const UserContext = createContext(null)
+const ManageUserContext = createContext(null)
 
-export function UserContext({children}){
+export function UserContext({children}) : any{
     const [user, dispatch] = useReducer(userReducer, initUser)
 
-    return(
-        <>
+    return( 
             <UserContext.Provider value={{user, dispatch}}>
                 <ManageUserContext.Provider value={dispatch}>
                     {children}
                 </ManageUserContext.Provider>
             </UserContext.Provider>
-        </>
     )
 }
 
-function userReducer(task, action){
+function userReducer(user : UserState, action : UserAction) {
 
 }
 
@@ -26,7 +25,7 @@ export function useUserContext(){
 }
 
 export function useManageUserContext(){
-    return useContext(MangerUserContext) 
+    return useContext(ManageUserContext) 
 }
 
 const initUser = {

@@ -2,16 +2,17 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+
 } from "react-router-dom"
 import './App.css'
 import Home from "./pages/Home"
 import Board from "./pages/Board"
-
+import {AppContext} from "./context/AppContext"
+ 
 function App() {
 
   return (
-    <>
+    
       <Router>
         
        
@@ -24,7 +25,7 @@ function App() {
           </Route>
         </Routes>
         </Router>
-    </>
+
   )
 }
 

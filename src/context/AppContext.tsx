@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 const AppContext = createContext(null);
 const AppDispatchContext = createContext(null)
 
-export function AppProvider({children}) {
+export function AppProvider({children} : any) {
     const [app, dispatch] = useReducer(appReducer, initAppContext)
 
     return(
@@ -15,7 +15,7 @@ export function AppProvider({children}) {
     )
 }
 
-function appReducer(task, action){
+function appReducer(task : any, action : any) : UserState{
 }
 
 export function useAppContext(){
@@ -26,7 +26,7 @@ export function useAppDisatchContext(){
     return useContext(AppDispatchContext)
 }
 
+
 const initAppContext = {
     theme: "light",
-    mode: "silent"
 }
