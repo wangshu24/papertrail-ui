@@ -18,7 +18,7 @@ function RootBrowserProvider(){
       <AuthProvider>  
  
           <Routes>
-            <Route path="/" element={ <Home />} />
+            <Route path="/" index={true} element={ <Home />} />
             <Route path="/signin" element={<SignIn/>} />      
             <Route path="/board" element={ <Board /> } />
           </Routes>
