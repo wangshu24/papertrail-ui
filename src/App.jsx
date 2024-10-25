@@ -10,20 +10,20 @@ import Home from "./pages/Home"
 import Board from "./pages/Board"
 import SignIn from "./pages/SignIn"
 import {AppProvider} from "./context/AppContext"
-import { UserContext } from "./context/UserContext"
+import { AuthProvider } from "./context/UserContext"
 
 function RootBrowserProvider(){
   return (
     <AppProvider>
-      <UserContext>  
-        <Router>
+      <AuthProvider>  
+ 
           <Routes>
             <Route path="/" element={ <Home />} />
             <Route path="/signin" element={<SignIn/>} />      
             <Route path="/board" element={ <Board /> } />
           </Routes>
-        </Router>
-      </UserContext>
+     
+      </AuthProvider>
     </AppProvider>
   )
 }

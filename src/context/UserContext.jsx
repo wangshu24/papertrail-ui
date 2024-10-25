@@ -1,34 +1,42 @@
 import { createContext, useContext, useReducer } from "react";
-import {UserState, UserAction} from  "./typeContext"
 
-const UserContext = createContext(null)
-const ManageUserContext = createContext(null)
+export const UserContext = createContext(null)
 
-export function UserContext({children}){
+export function AuthProvider({children}){
     const [user, dispatch] = useReducer(userReducer, initUser)
 
     return( 
             <UserContext.Provider value={{user, dispatch}}>
-                <ManageUserContext.Provider value={dispatch}>
                     {children}
-                </ManageUserContext.Provider>
             </UserContext.Provider>
     )
 }
 
 function userReducer(user , action ) {
-
+    switch(action.type){
+        case "SIGNIN":
+            let newUserProfile = {
+                signedIn: true,
+                user: {
+                    firstName: action.user.firstName,
+                    lastName: action.user.lastName
+                }
+            }
+            return newUserProfile
+        default:
+            newUserProfile = {signedIn: false, user: {}}
+           
+    }
 }
 
 export function useUserContext(){
     return useContext(UserContext)
 }
 
-export function useManageUserContext(){
-    return useContext(ManageUserContext) 
-}
-
 const initUser = {
-    firstName: "John",
-    lastName: "Doe"
+    signedIn: false, 
+    user: {
+        firstName: 'Placeholder',
+        lastName: 'Person'
+    }
 }
