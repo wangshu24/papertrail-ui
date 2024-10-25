@@ -16,6 +16,13 @@ export function AppProvider({children} ) {
 }
 
 function appReducer(task , action ){
+    switch(action.type){
+        case "light":
+            console.log('theme light')
+            break
+        default:
+            console.log("theme dark")
+    }
 }
 
 export function useAppContext(){
@@ -25,7 +32,6 @@ export function useAppContext(){
 export function useAppDisatchContext(){
     return useContext(AppDispatchContext)
 }
-
 
 const initAppContext = {
     theme: "light",
