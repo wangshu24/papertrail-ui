@@ -1,7 +1,9 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  createBrowserRouter,
+  RouterProvider
 } from "react-router-dom"
 import './App.css'
 import Home from "./pages/Home"
@@ -9,9 +11,8 @@ import Board from "./pages/Board"
 import SignIn from "./pages/SignIn"
 import {AppProvider} from "./context/AppContext"
 import { UserContext } from "./context/UserContext"
- 
-function App() {
 
+function RootBrowserProvider(){
   return (
     <AppProvider>
       <UserContext>  
@@ -25,6 +26,14 @@ function App() {
       </UserContext>
     </AppProvider>
   )
+}
+
+const router = createBrowserRouter([{
+  path: '*', element: <RootBrowserProvider/>
+}])
+
+function App() {
+  return <RouterProvider router={router}/>
 }
 
 export default App
