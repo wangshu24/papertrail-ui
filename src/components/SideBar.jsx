@@ -1,12 +1,5 @@
-
-function SideBar(){
-
-
-    return (
-    <>
-        SideBar
-    </>
-)
+function SideBar() {
+  return <>SideBar</>;
 }
 
-export default SideBar
+export default SideBar;
