@@ -1,13 +1,19 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext.jsx";
+import { NewUserContext } from "../App.jsx";
 
 function SignIn() {
   const { user, dispatch } = useContext(UserContext);
   const [email, changeEmail] = useState("");
+  console.log(user);
+
+  const { userState, setUserState } = useContext(NewUserContext);
 
   return (
     <>
-      Sign in please, {user.user.firstName + " " + user.user.lastName}
+      {userState.signedIn
+        ? "Welcome " + userState.user.firstName + " " + userState.user.lastName
+        : "You're not signed in yet."}
       <form>
         <label>Email</label>
         <br />
@@ -23,7 +29,11 @@ function SignIn() {
         onClick={() => {
           dispatch({
             type: "SIGNIN",
-            user: { firstName: "John", lastName: "Doe" },
+            payload: { firstName: "John", lastName: "Doe" },
+          });
+          setUserState({
+            type: "SIGNIN",
+            payload: { firstName: "John", lastName: "Doe" },
           });
           changeEmail("");
         }}

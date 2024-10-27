@@ -1,5 +1,4 @@
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   createBrowserRouter,
@@ -11,18 +10,17 @@ import Board from "./pages/Board";
 import SignIn from "./pages/SignIn";
 import { AppProvider } from "./context/AppContext";
 import { AuthProvider } from "./context/UserContext";
+import { createContext, useState } from "react";
+
+export const NewUserContext = createContext(null);
 
 function RootBrowserProvider() {
   return (
-    <AppProvider>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" index={true} element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/board" element={<Board />} />
-        </Routes>
-      </AuthProvider>
-    </AppProvider>
+    <Routes>
+      <Route path="/" index={true} element={<Home />} />
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/board" element={<Board />} />
+    </Routes>
   );
 }
 
@@ -34,7 +32,17 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  const [userState, setUserState] = useState({ signedIn: false, user: {} });
+
+  return (
+    <AppProvider>
+      <AuthProvider>
+        <NewUserContext.Provider value={{ userState, setUserState }}>
+          <RouterProvider router={router} />
+        </NewUserContext.Provider>
+      </AuthProvider>
+    </AppProvider>
+  );
 }
 
 export default App;

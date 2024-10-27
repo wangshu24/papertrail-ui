@@ -12,16 +12,17 @@ export function AuthProvider({ children }) {
   );
 }
 
-function userReducer(user, action) {
+function userReducer(task, action) {
   switch (action.type) {
     case "SIGNIN":
       let newUserProfile = {
         signedIn: true,
         user: {
-          firstName: action.user.firstName,
-          lastName: action.user.lastName,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
         },
       };
+
       return newUserProfile;
     default:
       newUserProfile = { signedIn: false, user: {} };
