@@ -5,6 +5,13 @@ export const UserContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, dispatch] = useReducer(userReducer, initUser);
 
+  // const [store] = useState(() => {
+  //   createStore((set) => ({
+  //     user: initUser,
+  //     actions: {},
+  //   }));
+  // });
+
   return (
     <UserContext.Provider value={{ user, dispatch }}>
       {children}
@@ -22,7 +29,6 @@ function userReducer(task, action) {
           lastName: action.payload.lastName,
         },
       };
-
       return newUserProfile;
     default:
       newUserProfile = { signedIn: false, user: {} };

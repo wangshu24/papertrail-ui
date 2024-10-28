@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 import { NewUserContext } from "../App.jsx";
+import NavigationBar from "../components/SideBar.jsx";
 
 function SignIn() {
   const { user, dispatch } = useContext(UserContext);
@@ -11,6 +12,7 @@ function SignIn() {
 
   return (
     <>
+      <NavigationBar />
       {userState.signedIn
         ? "Welcome " + userState.user.firstName + " " + userState.user.lastName
         : "You're not signed in yet."}
