@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useAppDisatchContext } from "../context/AppContext";
-import { UserContext } from "../context/UserContext";
+import { useAppDisatchContext } from "../contexts/AppContext";
+import { UserContext } from "../contexts/UserContext";
 import { useContext, useEffect } from "react";
-import NavigationBar from "../components/SideBar";
+import NavigationBar from "../components/NavigationBar";
 
 function Home() {
   const dispatch = useAppDisatchContext();

@@ -1,20 +1,16 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../context/UserContext.jsx";
-import { NewUserContext } from "../App.jsx";
-import NavigationBar from "../components/SideBar.jsx";
+import { UserContext } from "../contexts/UserContext.jsx";
+import NavigationBar from "../components/NavigationBar.jsx";
 
 function SignIn() {
   const { user, dispatch } = useContext(UserContext);
   const [email, changeEmail] = useState("");
-  console.log(user);
-
-  const { userState, setUserState } = useContext(NewUserContext);
 
   return (
     <>
       <NavigationBar />
-      {userState.signedIn
-        ? "Welcome " + userState.user.firstName + " " + userState.user.lastName
+      {user.signedIn
+        ? "Welcome " + user.user.firstName + " " + user.user.lastName
         : "You're not signed in yet."}
       <form>
         <label>Email</label>
@@ -30,10 +26,6 @@ function SignIn() {
       <button
         onClick={() => {
           dispatch({
-            type: "SIGNIN",
-            payload: { firstName: "John", lastName: "Doe" },
-          });
-          setUserState({
             type: "SIGNIN",
             payload: { firstName: "John", lastName: "Doe" },
           });

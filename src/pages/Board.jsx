@@ -1,14 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../contexts/UserContext";
 import { useContext, useEffect } from "react";
-import { NewUserContext } from "../App";
 import NavigationBar from "../components/SideBar";
 
 function Board() {
   const { user, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
-
-  const { userState, setUserState } = useContext(NewUserContext);
 
   useEffect(() => {
     if (!user.signedIn) {
